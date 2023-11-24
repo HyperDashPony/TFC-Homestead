@@ -167,7 +167,7 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "tfcambiental",
+                "Specification-Title"     : "tfchomestead",
                 "Specification-Vendor"    : "lumintoriouss",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
