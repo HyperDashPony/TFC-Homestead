@@ -5,7 +5,7 @@ import com.lumintorious.tfchomestead.common.TFCHomesteadConfig;
 import com.lumintorious.tfchomestead.common.block.HomesteadBlockEntities;
 import com.lumintorious.tfchomestead.common.block.HomesteadBlocks;
 import com.lumintorious.tfchomestead.common.api.StoredTrait;
-import com.lumintorious.tfchomestead.common.blockentity.GrainPileBlockEntity;
+import com.lumintorious.tfchomestead.common.block.entity.GrainPileBlockEntity;
 import com.lumintorious.tfchomestead.common.drinks.HomesteadFluid;
 import com.lumintorious.tfchomestead.common.entity.HomesteadEntities;
 import com.lumintorious.tfchomestead.common.item.HomesteadItems;
@@ -49,6 +49,7 @@ public class TFCHomestead
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         if(FMLEnvironment.dist == Dist.CLIENT) {
+            eventBus.addListener(ClientEvents::setup);
             ClientEvents.init();
         }
 
@@ -97,7 +98,7 @@ public class TFCHomestead
                 event.getHand(),
                 stack,
                 event.getHitVec()
-            ))) {/*
+            ))) {
                 HomesteadBlocks.GRAIN_PILES.forEach((grain, pile) -> {
                     if (TFCItems.FOOD.get(grain.getFood()).get().equals(stack.getItem())) {
                         level.setBlockAndUpdate(
@@ -110,7 +111,7 @@ public class TFCHomestead
                 event.setCancellationResult(InteractionResult.SUCCESS);
                 if(level.getBlockEntity(pos) instanceof GrainPileBlockEntity entity) {
                     entity.takeStack(player);
-                }*/
+                }
             }
         }
     }
